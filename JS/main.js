@@ -8,11 +8,13 @@ var searcher = document.getElementById("searchIcon");
 var newShopDisplay = document.getElementById("newShopForm");
 var formContainer = document.getElementById("formContainer");
 var generalContainer = document.getElementById("generalContainer");
+var formButton = document.getElementById("sendButton");
 
 var comprobadorMostrar = true;
 var foldChecker = true;
+//const url ="http://localhost:8080/EmprInfRs_HernandezDaniel/webresources/tienda/";
 const url =
-  "http://localhost:8080/EmprInfRs_HernandezDaniel/webresources/tienda/";
+  "https://webapp-210130211157.azurewebsites.net/webresources/mitienda/";
 var nameOption;
 optionsEvents();
 fieldProperties();
@@ -21,6 +23,7 @@ hideForm();
 
 searcher.addEventListener("click", showSearchData);
 newShopDisplay.addEventListener("click", displayForm);
+formButton.addEventListener("click", saveDataForm);
 
 //-------------------------------------------------- START MENU --------------------------------------------------
 function optionsEvents() {
@@ -34,7 +37,6 @@ function optionsEvents() {
 
 function optionSelected(option) {
   generalContainer.classList.remove("hide");
-
   var selectContainer = document.getElementById("fatherContSelect");
   selectContainer.classList.add("hide");
   nameOption = option.target.name;
@@ -96,29 +98,6 @@ function shopCardCreator(data) {
 
   dataContainer.appendChild(clon);
 }
-/**
- * Cambiamos el icono de el botón de buscar y borramos el contenedor
- * @param {*} element
- */
-function removeData(element) {
-  if (comprobadorMostrar) {
-    //Eliminamos los datos anteriores y mostramos la nueva tienda
-    clearData();
-    if (element != undefined) {
-      shopCardCreator(element);
-    }
-    searcher.innerText = "x";
-    comprobadorMostrar = false;
-  } else {
-    clearData();
-    showShops();
-    searcher.innerText = "";
-    var temp = document.getElementsByTagName("template")[3];
-    var clon = temp.content.cloneNode(true);
-    searcher.appendChild(clon);
-    comprobadorMostrar = true;
-  }
-}
 
 //-------------------------------------------------- ADD EVENTS --------------------------------------------------
 /**
@@ -152,9 +131,32 @@ function displayForm() {
     foldChecker = true;
   }
 }
-//-------------------------------------------------- ENVIAR DATOS --------------------------------------------------
-var formButton = document.getElementById("sendButton");
-formButton.addEventListener("click", saveDataForm);
+//-------------------------------------------------- LOADER --------------------------------------------------
+
+function formLoader() {
+  var setButton = document.getElementById("sendButton");
+  var refreshSearch = document.getElementById("refreshSearchForm");
+  refreshSearch.classList.add("displayContent");
+  setButton.disabled = true;
+}
+
+function hideFormLoader() {
+  var setButton = document.getElementById("sendButton");
+  var refreshSearch = document.getElementById("refreshSearchForm");
+  refreshSearch.classList.remove("displayContent");
+  setButton.disabled = false;
+}
+
+function showSearchLoader() {
+  var lensIcon = document.getElementById("lensIcon");
+  var refreshSearch = document.getElementById("refreshSearch");
+  if (lensIcon != null && refreshSearch != null) {
+    lensIcon.classList.add("hide");
+    refreshSearch.classList.add("displayContent");
+  }
+}
+
+//-------------------------------------------------- SEND DATA --------------------------------------------------
 
 function saveDataForm() {
   var checker = true;
@@ -217,6 +219,7 @@ function saveShop() {
   }
 }
 
+//-------------------------------------------------- CLEAR/REMOVE ITEMS --------------------------------------------------
 function clearData() {
   //Eliminamos todo el contenedor
   while (dataContainer.firstChild) {
@@ -230,10 +233,38 @@ function clearInputs() {
     formElements[acct].value = "";
   }
 }
-/*for (let i = 0; i < elementosForm.elements.length; i++) {
-  var elementoActual = elementosForm.elements[i];
-  console.log(elementoActual.value);
-}*/
+
+function removeLoader() {
+  var loader = document.getElementById("refreshIcon");
+  loader.classList.add("hide");
+}
+
+/**
+ * Cambiamos el icono de el botón de buscar y borramos el contenedor
+ * @param {*} element Elemento a añadir
+ */
+function removeData(element) {
+  if (comprobadorMostrar) {
+    //Eliminamos los datos anteriores y mostramos la nueva tienda
+    clearData();
+    if (element != undefined) {
+      shopCardCreator(element);
+    }
+    searcher.innerText = "x";
+    comprobadorMostrar = false;
+  } else {
+    clearData();
+    showShops();
+    searcher.innerText = "";
+    var temp = document.getElementsByTagName("template")[3];
+    var clon = temp.content.cloneNode(true);
+    searcher.appendChild(clon);
+    comprobadorMostrar = true;
+  }
+}
+
+//-------------------------------------------------- FORM --------------------------------------------------
+
 function fieldChecker(field) {
   var fieldName = field.target.name;
   var requirements = rulesSearcher(fieldName);
@@ -266,6 +297,7 @@ function rulesSearcher(field) {
   });
   return requisitosCorrectos;
 }
+
 /**
  * Marcamos el cuadro en verde del elemento que llama a esta función y eliminamos su error si lo hubiera
  * @param {*} field campo del que se llama a la función
@@ -307,5 +339,12 @@ class Shop {
     this.telefono = telefono;
   }
 }
-
-export { clearData, shopCardCreator, removeData };
+export {
+  clearData,
+  shopCardCreator,
+  removeData,
+  removeLoader,
+  showSearchLoader,
+  formLoader,
+  hideFormLoader,
+};

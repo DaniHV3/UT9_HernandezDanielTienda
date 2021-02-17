@@ -3,10 +3,8 @@ body {
   font-family: "Poppins", sans-serif;
   font-size: 1em;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  height: 100%;
-}
+  box-sizing: border-box;
+  height: 100%; }
 
 header {
   text-align: center;
@@ -16,65 +14,49 @@ header {
   font-size: 27px;
   font-weight: bold;
   padding-top: 7px;
-  padding-bottom: 7px;
-}
+  padding-bottom: 7px; }
 
 #dataContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
-  -ms-flex-item-align: center;
-      align-self: center;
-}
+  align-self: center; }
+
+#refreshSearch {
+  animation: rotating 1.5s linear infinite;
+  display: none; }
+
+#refreshSearchForm {
+  margin-left: 4px;
+  animation: rotating 1.5s linear infinite;
+  display: none; }
 
 #generalContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-item-align: center;
-      align-self: center;
-  margin-top: 30px;
-}
+  flex-direction: column;
+  align-self: center;
+  margin-top: 30px; }
 
 #blockContainer {
-  display: none;
-}
+  display: none; }
 
 .cardShop {
   border: 2px solid #9fbc93;
   border-radius: 10px;
-  -webkit-box-shadow: 1px 3px 6px 0px #9fbc93;
-          box-shadow: 1px 3px 6px 0px #9fbc93;
+  box-shadow: 1px 3px 6px 0px #9fbc93;
   margin-top: 12px;
-  padding-left: 20px;
-}
+  padding-left: 20px; }
 
 .nameShop {
-  color: #1a5a19;
-}
+  color: #1a5a19; }
 
 #searcherContainer {
   color: #1a5a19;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-item-align: center;
-      align-self: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: flex !important;
+  align-self: center;
+  justify-content: space-between;
   width: 100%;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 #searchIcon {
   padding-left: 8px;
@@ -84,54 +66,37 @@ header {
   border: 1px solid #2c942b;
   color: #2c942b;
   background-color: white;
-  outline: none;
-}
+  outline: none; }
 
 #searchIcon:hover {
   background-color: #2c942b;
-  color: white;
-}
+  color: white; }
+
+#searchIcon:active {
+  box-shadow: 0px 0px 5px 1px rgba(3, 60, 231, 0.75); }
 
 #idContainer {
   padding-top: 4px;
   padding-bottom: 4px;
   border: 1px solid #d0cece;
-  border-radius: 3px;
-}
+  border-radius: 3px; }
 
 #totalData {
   min-width: 1000px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-item-align: center;
-      align-self: center;
-}
+  flex-direction: column;
+  align-self: center; }
 
 .errorShop {
-  color: #1a5519;
-}
+  color: #1a5519; }
 
 .fieldForm {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
+  display: flex; }
 
 .form-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-}
+  flex-direction: column;
+  width: 100%; }
 
 .form-control {
   width: 95%;
@@ -139,129 +104,87 @@ header {
   border: 2px solid;
   border-radius: 3px;
   min-height: 23px;
-  outline: none;
-}
+  outline: none; }
 
 #formContainer {
   border: 2px solid #9fbc93;
   border-radius: 10px;
   margin-top: 12px;
   padding-left: 20px;
-  padding: 10px;
-}
+  padding: 10px; }
 
 #sendData {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
   margin-right: 13px;
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
 .displayForm {
-  -webkit-animation-name: openForm;
-          animation-name: openForm;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+  animation-name: openForm;
+  animation-duration: 1.5s;
   overflow: hidden;
-  display: block;
-}
+  display: block; }
 
 .displayContent {
-  display: block !important;
-}
+  display: block !important; }
 
 #hideSearcherContainer {
-  display: none;
-}
+  display: none; }
 
 .foldForm {
   padding: 0px;
-  -webkit-animation-name: closeForm !important;
-          animation-name: closeForm !important;
-  -webkit-animation-duration: 1.5s !important;
-          animation-duration: 1.5s !important;
-  overflow: hidden !important;
-}
+  animation-name: closeForm !important;
+  animation-duration: 1.5s !important;
+  overflow: hidden !important; }
 
 .hide {
-  display: none !important;
-}
+  display: none !important; }
 
 .sectionForms {
   margin: 0px;
   color: #2c942b;
-  padding-top: 4px;
-}
+  padding-top: 4px; }
 
 #sendButton {
+  display: flex;
   border: 1px solid #2c942b;
   border-radius: 3px;
   font-size: 16px;
-  background-color: #c9e6c2;
-}
+  background-color: #c9e6c2; }
 
 #sendButton:hover {
-  background-color: #9bda8b;
-}
+  background-color: #9bda8b; }
 
 .errorForm {
   color: red;
-  font-size: 13px;
-}
+  font-size: 13px; }
 
 .errorField {
-  border-color: red;
-}
+  border-color: red; }
 
 .correctField {
-  border-color: green;
-}
+  border-color: green; }
 
 #shopId {
   min-height: 19px;
-  outline: none;
-}
+  outline: none; }
 
 #contSelect {
   max-width: 900px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
+  flex-direction: column; }
 
 #fatherContSelect {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 13%;
-}
+  justify-content: center;
+  align-items: center;
+  margin-top: 13%; }
 
 #contOptions {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 50%;
-  -ms-flex-item-align: center;
-      align-self: center;
-}
+  align-self: center; }
 
 .option {
   margin-top: 6px;
@@ -271,82 +194,40 @@ header {
   background-color: #e3fbd2;
   border: 2px solid #83ac6c;
   border-radius: 3px;
-  outline: none;
-}
+  outline: none; }
 
 .option:hover {
-  background-color: #a5da86;
-}
+  background-color: #a5da86; }
 
 .option:active {
   background-color: #1c5f1b;
-  color: white;
-}
+  color: white; }
 
 #refreshIcon {
+  transform: translate(0%, 50%);
   font-size: 65px;
-  padding: 0px;
-  margin: 0px;
+  color: #1a5a19;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 250px;
   width: 55px;
-  -webkit-animation: rotating 1.5s linear infinite;
-          animation: rotating 1.5s linear infinite;
-}
-
-@-webkit-keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
+  animation: rotating 1.5s linear infinite;
+  display: block; }
 
 @keyframes rotating {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
+    transform: rotate(0deg); }
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes openForm {
-  from {
-    height: 0px;
-  }
-  to {
-    height: 190px;
-  }
-}
+    transform: rotate(360deg); } }
 
 @keyframes openForm {
   from {
-    height: 0px;
-  }
+    height: 0px; }
   to {
-    height: 190px;
-  }
-}
-
-@-webkit-keyframes closeForm {
-  from {
-    height: 190px;
-  }
-  to {
-    height: 0px;
-  }
-}
+    height: 190px; } }
 
 @keyframes closeForm {
   from {
-    height: 190px;
-  }
+    height: 190px; }
   to {
-    height: 0px;
-  }
-}
-/*# sourceMappingURL=mainStyle.css.map */
+    height: 0px; } }

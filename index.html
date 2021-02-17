@@ -26,27 +26,32 @@
                  <button id="XHRoption" name="xhr" class="option">XHR</button>
                  <button id="Fetchoption" name="fetch" class="option">Fetch</button>
                  <button id="jQueryoption" name="jquery"class="option">jQuery</button>
+                 
              </div>
+             
         </div>
      </div>
      
     <div id="generalContainer">
+        
         <div id="totalData">
+            
             <div id="hideSearcherContainer">
                 <div id="searcherContainer">
                     <div id="newShopForm">Nueva tienda</div>
                     <div>
                         <input type="search" name="" id="shopId" placeholder="ID de Tienda">
                         <button id="searchIcon">
-                            <i class="fa fa-search"></i>
-                            
+                            <i id="lensIcon" class="fa fa-search"></i>
+                            <i id="refreshSearch" class="fa fa-refresh"></i>
                         </button>
                     </div>
                 </div>
             </div>
             <div id="formContainer">
+                
                 <form action="" id="myForm">  
-                    <h2 class="sectionForms">Nueva Empresa</h2>    
+                    <h2 class="sectionForms">Nueva Empresa </h2>    
                     <div class="fieldForm">
                         <div class="form-group" >
                             Nombre
@@ -77,13 +82,13 @@
                     </div>
                 </form>
                 <div id="sendData">
-                    <button type="submit" id="sendButton">Añadir tienda</button>
+                    <button type="submit" id="sendButton"><div>Añadir tienda</div> <i id="refreshSearchForm" class="fa fa-refresh"></i></button>
                 </div>
             </div>
             <div id="dataContainer">
-                
+                <i id="refreshIcon" class="fa fa-refresh"></i>
             </div>
-            <i id="refreshIcon" class="fa fa-refresh"></i>
+            
         </div>
           
       </div> 
@@ -106,7 +111,11 @@
     </div>
     </template>
     <template>
-        <i class="fa fa-search"></i>
+        <i id="lensIcon" class="fa fa-search"></i>
+        <i id="refreshSearch" class="fa fa-refresh"></i>
+    </template>
+    <template>
+        <i id="refreshSearch" class="fa fa-refresh"></i>
     </template>
 
    <script type="module" src="./JS/main.js"></script>
