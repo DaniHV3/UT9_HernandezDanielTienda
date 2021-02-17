@@ -26,6 +26,9 @@ newShopDisplay.addEventListener("click", displayForm);
 formButton.addEventListener("click", saveDataForm);
 
 //-------------------------------------------------- START MENU --------------------------------------------------
+/**
+ * Añadimos los eventos a los botones de elección de servicio
+ */
 function optionsEvents() {
   var XHR = document.getElementById("XHRoption");
   var fetch = document.getElementById("Fetchoption");
@@ -35,6 +38,10 @@ function optionsEvents() {
   jQuery.addEventListener("click", optionSelected);
 }
 
+/**
+ * Una vez seleccionamos una opción de servicio, ocultamos su menú
+ * @param {*} option opción de servicio elegida
+ */
 function optionSelected(option) {
   generalContainer.classList.remove("hide");
   var selectContainer = document.getElementById("fatherContSelect");
@@ -43,10 +50,16 @@ function optionSelected(option) {
   showShops();
 }
 
+/**
+ * Ocultamos el container general
+ */
 function hideGeneralContainer() {
   generalContainer.classList.add("hide");
 }
 
+/**
+ * Mostramos todas las tiendas iniciales con el servicio elegido
+ */
 function showShops() {
   if (nameOption == "xhr") {
     showDataXhr(url);
@@ -59,7 +72,9 @@ function showShops() {
     errorChecker();
   }
 }
-
+/**
+ * Recogemos el valor introducido y se lo pasamos al servicio seleccionado
+ */
 function showSearchData() {
   var id = document.getElementById("shopId");
   var finalUrl = url + id.value;
@@ -73,7 +88,9 @@ function showSearchData() {
     }
   }
 }
-
+/**
+ * Comprobamos si se han mostrado las tiendas para mostrar o no el buscador
+ */
 function errorChecker() {
   if (dataContainer.childNodes.length >= 2) {
     var showSearcher = document.getElementById("searcherContainer");
@@ -81,6 +98,10 @@ function errorChecker() {
   }
 }
 
+/**
+ * Creamos la ficha de la tienda apartir de sus datos
+ * @param {*} data datos de la tienda
+ */
 function shopCardCreator(data) {
   var temp = document.getElementsByTagName("template")[0];
   var clon = temp.content.cloneNode(true);
@@ -110,11 +131,10 @@ function fieldProperties() {
   }
 }
 
-function hideForm() {
-  formContainer.classList.add("hide");
-}
-
 //-------------------------------------------------- FORM --------------------------------------------------
+/**
+ * Desplegamos o Plegamos el formulario
+ */
 function displayForm() {
   if (foldChecker) {
     formContainer.classList.remove("hide");
@@ -131,8 +151,16 @@ function displayForm() {
     foldChecker = true;
   }
 }
+/**
+ * Ocultamos el formulario al principio del programa
+ */
+function hideForm() {
+  formContainer.classList.add("hide");
+}
 //-------------------------------------------------- LOADER --------------------------------------------------
-
+/**
+ * Deshabilitamos el botón de envio de formulario y mostramos el icono de refresco
+ */
 function formLoader() {
   var setButton = document.getElementById("sendButton");
   var refreshSearch = document.getElementById("refreshSearchForm");
@@ -140,6 +168,9 @@ function formLoader() {
   setButton.disabled = true;
 }
 
+/**
+ * Habilitamos el botón una vez se haya finalizado la petición de creación de tienda
+ */
 function hideFormLoader() {
   var setButton = document.getElementById("sendButton");
   var refreshSearch = document.getElementById("refreshSearchForm");
@@ -147,6 +178,9 @@ function hideFormLoader() {
   setButton.disabled = false;
 }
 
+/**
+ * Ocultamos la lupa y mostramos el icono de refresco
+ */
 function showSearchLoader() {
   var lensIcon = document.getElementById("lensIcon");
   var refreshSearch = document.getElementById("refreshSearch");
@@ -158,6 +192,9 @@ function showSearchLoader() {
 
 //-------------------------------------------------- SEND DATA --------------------------------------------------
 
+/**
+ * Comprobamos los datos del formulario que estén en su formato correcto
+ */
 function saveDataForm() {
   var checker = true;
   var requirements = rulesSearcher(fieldName);
@@ -199,6 +236,9 @@ function saveDataForm() {
   }
 }
 
+/**
+ * Guardamos los datos de la tienda
+ */
 function saveShop() {
   var formElements = document.forms[0];
   formElements = formElements.elements;
@@ -220,12 +260,18 @@ function saveShop() {
 }
 
 //-------------------------------------------------- CLEAR/REMOVE ITEMS --------------------------------------------------
+/**
+ * Limpiamos el almacen donde se muestran las tiendas
+ */
 function clearData() {
   //Eliminamos todo el contenedor
   while (dataContainer.firstChild) {
     dataContainer.removeChild(dataContainer.firstChild);
   }
 }
+/**
+ * Limpiamos los inputs una vez se haya enviado correctamente el formulario
+ */
 function clearInputs() {
   var formElements = document.forms[0];
   formElements = formElements.elements;
@@ -233,7 +279,9 @@ function clearInputs() {
     formElements[acct].value = "";
   }
 }
-
+/**
+ * Escondemos el icono de refresco una vez se haya realizado la petición
+ */
 function removeLoader() {
   var loader = document.getElementById("refreshIcon");
   loader.classList.add("hide");
@@ -265,6 +313,10 @@ function removeData(element) {
 
 //-------------------------------------------------- FORM --------------------------------------------------
 
+/**
+ * Comprobamos si el contenido de ese campo está en el formato correcto
+ * @param {*} field campo que se está comprobando
+ */
 function fieldChecker(field) {
   var fieldName = field.target.name;
   var requirements = rulesSearcher(fieldName);
@@ -288,6 +340,10 @@ function fieldChecker(field) {
   }
 }
 
+/**
+ * Buscamos las reglas de cada campo
+ * @param {*} field campo que se está comprobando
+ */
 function rulesSearcher(field) {
   var requisitosCorrectos;
   datos.campos.forEach((dato) => {

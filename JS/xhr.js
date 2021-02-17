@@ -6,6 +6,13 @@ import {
   formLoader,
   hideFormLoader,
 } from "./main.js";
+
+import { failServer, failSearch } from "./typeRequest.js";
+
+/**
+ * Mostramos las tiendas con el servicio XHR
+ * @param {*} url dirección url del que se consume el servicio
+ */
 function showDataXhr(url) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -17,17 +24,11 @@ function showDataXhr(url) {
         var showSearcher = document.getElementById("hideSearcherContainer");
         showSearcher.classList.add("displayContent");
       } catch {
-        clearData();
-        var temp = document.getElementsByTagName("template")[1];
-        var clon = temp.content.cloneNode(true);
-        dataContainer.appendChild(clon);
+        failServer();
       }
     } else {
       if (this.readyState == 4 && this.status == 0) {
-        clearData();
-        var temp = document.getElementsByTagName("template")[1];
-        var clon = temp.content.cloneNode(true);
-        dataContainer.appendChild(clon);
+        failServer();
       }
     }
   };
@@ -35,6 +36,10 @@ function showDataXhr(url) {
   xhttp.send();
 }
 
+/**
+ * Buscamos la tienda introducida por teclado con el servicio XHR
+ * @param {*} url dirección url del que se consume el servicio
+ */
 function searchShopXhr(url) {
   var xhttp = new XMLHttpRequest();
 
@@ -45,20 +50,14 @@ function searchShopXhr(url) {
         clearData();
         removeData(totalShops);
       } catch {
-        removeData();
-        var temp = document.getElementsByTagName("template")[2];
-        var clon = temp.content.cloneNode(true);
-        dataContainer.appendChild(clon);
+        failSearch();
       }
     } else {
       if (
         this.readyState >= 4 &&
         (this.status == 0 || this.status == 204 || this.status == 404)
       ) {
-        removeData();
-        var temp = document.getElementsByTagName("template")[2];
-        var clon = temp.content.cloneNode(true);
-        dataContainer.appendChild(clon);
+        failSearch();
       } else {
         showSearchLoader();
       }
@@ -68,6 +67,11 @@ function searchShopXhr(url) {
   xhttp.send();
 }
 
+/**
+ * Creamos la tienda introducida por teclado con el servicio XHR
+ * @param {*} shopToJson datos de la tienda a introducir
+ * @param {*} url dirección url del que se consume el servicio
+ */
 function setShopXhr(shopToJson, url) {
   var xhttp = new XMLHttpRequest();
 
@@ -79,10 +83,7 @@ function setShopXhr(shopToJson, url) {
     } else {
       if (this.readyState == 4 && this.status == 0) {
         hideFormLoader();
-        clearData();
-        var temp = document.getElementsByTagName("template")[1];
-        var clon = temp.content.cloneNode(true);
-        dataContainer.appendChild(clon);
+        failServer();
       } else {
         formLoader();
       }

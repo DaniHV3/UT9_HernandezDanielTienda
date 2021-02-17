@@ -7,6 +7,12 @@ import {
   hideFormLoader,
 } from "./main.js";
 
+import { failServer, failSearch } from "./typeRequest.js";
+
+/**
+ * Mostramos las tiendas con el servicio Fetch
+ * @param {*} url dirección url del que se consume el servicio
+ */
 function showDataFetch(url) {
   fetch(url)
     .then((response) => response.json())
@@ -17,13 +23,14 @@ function showDataFetch(url) {
       showSearcher.classList.add("displayContent");
     })
     .catch(function () {
-      clearData();
-      var temp = document.getElementsByTagName("template")[1];
-      var clon = temp.content.cloneNode(true);
-      dataContainer.appendChild(clon);
+      failServer();
     });
 }
 
+/**
+ * Buscamos la tienda introducida por teclado con el servicio Fetch
+ * @param {*} url dirección url del que se consume el servicio
+ */
 function searchShopFetch(url) {
   showSearchLoader();
   fetch(url)
@@ -32,13 +39,15 @@ function searchShopFetch(url) {
       removeData(data);
     })
     .catch(function () {
-      removeData();
-      var temp = document.getElementsByTagName("template")[2];
-      var clon = temp.content.cloneNode(true);
-      dataContainer.appendChild(clon);
+      failSearch();
     });
 }
 
+/**
+ * Creamos la tienda introducida por teclado con el servicio Fetch
+ * @param {*} shopToJson datos de la tienda a introducir
+ * @param {*} url dirección url del que se consume el servicio
+ */
 function setShopFetch(shopToJson, url) {
   formLoader();
   fetch(url, {
@@ -55,10 +64,7 @@ function setShopFetch(shopToJson, url) {
     })
     .catch(function () {
       hideFormLoader();
-      clearData();
-      var temp = document.getElementsByTagName("template")[1];
-      var clon = temp.content.cloneNode(true);
-      dataContainer.appendChild(clon);
+      failServer();
     });
 }
 

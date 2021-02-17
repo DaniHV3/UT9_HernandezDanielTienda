@@ -6,6 +6,12 @@ import {
   formLoader,
   hideFormLoader,
 } from "./main.js";
+import { failServer, failSearch } from "./typeRequest.js";
+
+/**
+ * Mostramos las tiendas con el servicio jQuery
+ * @param {*} urls dirección url del que se consume el servicio
+ */
 function showDataJQuery(urls) {
   $.ajax({
     url: urls,
@@ -19,13 +25,13 @@ function showDataJQuery(urls) {
       showSearcher.classList.add("displayContent");
     })
     .fail(function () {
-      clearData();
-      var temp = document.getElementsByTagName("template")[1];
-      var clon = temp.content.cloneNode(true);
-      dataContainer.appendChild(clon);
+      failServer();
     });
 }
-
+/**
+ * Buscamos la tienda introducida por teclado con el servicio Fetch
+ * @param {*} urls dirección url del que se consume el servicio
+ */
 function searchShopJquery(urls) {
   $.ajax({
     url: urls,
@@ -38,20 +44,19 @@ function searchShopJquery(urls) {
         clearData();
         removeData(data);
       } else {
-        removeData();
-        var temp = document.getElementsByTagName("template")[2];
-        var clon = temp.content.cloneNode(true);
-        dataContainer.appendChild(clon);
+        failSearch();
       }
     })
     .fail(function () {
-      removeData();
-      var temp = document.getElementsByTagName("template")[2];
-      var clon = temp.content.cloneNode(true);
-      dataContainer.appendChild(clon);
+      failSearch();
     });
 }
 
+/**
+ * Creamos la tienda introducida por teclado con el servicio jQuery
+ * @param {*} shopToJson datos de la tienda a introducir
+ * @param {*} urls dirección url del que se consume el servicio
+ */
 function setShopJQuery(shopToJson, urls) {
   $.ajax({
     headers: {
@@ -71,10 +76,7 @@ function setShopJQuery(shopToJson, urls) {
     })
     .fail(function () {
       hideFormLoader();
-      clearData();
-      var temp = document.getElementsByTagName("template")[1];
-      var clon = temp.content.cloneNode(true);
-      dataContainer.appendChild(clon);
+      failServer();
     });
 }
 
