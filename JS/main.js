@@ -72,6 +72,7 @@ function showShops() {
     errorChecker();
   }
 }
+
 /**
  * Recogemos el valor introducido y se lo pasamos al servicio seleccionado
  */
