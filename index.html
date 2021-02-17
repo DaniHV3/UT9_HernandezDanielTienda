@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SCSS/mainStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <header>Tiendas</header>
+    
+
+    <div id="fatherContSelect">
+        <div id="contSelect">
+             <h1>
+                 Elige un método para realizar AJAX:
+             </h1>
+             <div id="contOptions">
+                
+                
+                 <button id="XHRoption" name="xhr" class="option">XHR</button>
+                 <button id="Fetchoption" name="fetch" class="option">Fetch</button>
+                 <button id="jQueryoption" name="jquery"class="option">jQuery</button>
+             </div>
+        </div>
+     </div>
+     
+    <div id="generalContainer">
+        <div id="totalData">
+            <div id="hideSearcherContainer">
+                <div id="searcherContainer">
+                    <div id="newShopForm">Nueva tienda</div>
+                    <div>
+                        <input type="search" name="" id="shopId" placeholder="ID de Tienda">
+                        <button id="searchIcon">
+                            <i class="fa fa-search"></i>
+                            
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="formContainer">
+                <form action="" id="myForm">  
+                    <h2 class="sectionForms">Nueva Empresa</h2>    
+                    <div class="fieldForm">
+                        <div class="form-group" >
+                            Nombre
+                            <input type="text" class="form-control"  name="nombre" placeholder="Nombre de la empresa"  pattern="" required>
+                            <div class="errorForm"></div>
+                        </div>
+                        <div class="form-group" >
+                            Dirección
+                            <input type="text" class="form-control"  name="direccion" placeholder="Dirección de la empresa"  pattern="" required>
+                            <div class="errorForm"></div>
+                        </div>
+                                
+                    </div>
+                    <div>
+                            <div class="fieldForm">
+                                <div class="form-group">
+                                    Localidad
+                                    <input type="text" class="form-control"  name="localidad" placeholder="Localidad de la empresa"  pattern="" required>
+                                    <div class="errorForm"></div>
+                                </div>
+                                <div class="form-group" >
+                                    Teléfono
+                                    <input type="text" class="form-control" name="telefono" placeholder="Teléfono de la empresa"  pattern="(^[(][+]{1}[0-9]{2,3}[)]{0,1})?[ -]*(6|8|9)[ -]*([0-9][ -]*){8}" required>
+                                    <div class="errorForm"></div>
+                                </div>
+                                
+                            </div>
+                    </div>
+                </form>
+                <div id="sendData">
+                    <button type="submit" id="sendButton">Añadir tienda</button>
+                </div>
+            </div>
+            <div id="dataContainer">
+                
+            </div>
+            <i id="refreshIcon" class="fa fa-refresh"></i>
+        </div>
+          
+      </div> 
+
+  <template>
+    <div class="cardShop">
+        <h2 class="nameShop"></h2>
+        <p></p>
+        <p></p>
+    </div>
+  </template>
+  <template>
+      <div>
+          <h2 class="errorShop">Ha habido un error al intentar conectar con el servidor</h2>
+      </div>
+  </template>
+  <template>
+    <div>
+        <h1 class="errorShop">Tienda no encontrada</h1>
+    </div>
+    </template>
+    <template>
+        <i class="fa fa-search"></i>
+    </template>
+
+   <script type="module" src="./JS/main.js"></script>
+   
+</body>
+</html>

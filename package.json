@@ -1,0 +1,17 @@
+{
+  "name": "ut9_hernandezdanieltienda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./JS/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-jsdoc3": "^3.0.0",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^5.0.0"
+  }
+}
