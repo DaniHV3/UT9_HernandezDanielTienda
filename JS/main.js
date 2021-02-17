@@ -78,14 +78,15 @@ function showShops() {
 function showSearchData() {
   var id = document.getElementById("shopId");
   var finalUrl = url + id.value;
-  if (id.value != "") {
-    if (nameOption == "xhr") {
-      searchShopXhr(finalUrl);
-    } else if (nameOption == "fetch") {
-      searchShopFetch(finalUrl);
-    } else if (nameOption == "jquery") {
-      searchShopJquery(finalUrl);
-    }
+  if (id.value == "") {
+    finalUrl = url + "x";
+  }
+  if (nameOption == "xhr") {
+    searchShopXhr(finalUrl);
+  } else if (nameOption == "fetch") {
+    searchShopFetch(finalUrl);
+  } else if (nameOption == "jquery") {
+    searchShopJquery(finalUrl);
   }
 }
 /**
@@ -307,6 +308,7 @@ function removeData(element) {
     var temp = document.getElementsByTagName("template")[3];
     var clon = temp.content.cloneNode(true);
     searcher.appendChild(clon);
+    searcher.addEventListener("click", showSearchData);
     comprobadorMostrar = true;
   }
 }
